@@ -2,7 +2,7 @@
 //------------------------------------------------------------------------------
 {
 	.ProjectName		= 'Core'
-	.ProjectPath		= 'Core'
+	.ProjectPath		= 'Sources'
 	.PCHName			= 'PrecompiledHeader'
 
 	// Visual Studio Project Generation
@@ -10,8 +10,8 @@
 	VCXProject( '$ProjectName$-proj' )
 	{
 		.ProjectOutput				= '../tmp/VisualStudio/Projects/$ProjectName$.vcxproj'
-		.ProjectInputPaths			= '$ProjectPath$\'
-		.ProjectBasePath			= '$ProjectPath$\'
+		.ProjectInputPaths			= '../$ProjectPath$\'
+		.ProjectBasePath			= '../Sources/$ProjectPath$\'
 
 		// Exclude Tests
 		.ProjectInputPathsExclude	= '$ProjectPath$\CoreTest\'
@@ -21,14 +21,14 @@
 	//--------------------------------------------------------------------------
 	{
 		// Common options
-		.UnityInputPath				= '$ProjectPath$\'
+		.UnityInputPath				= { '../Sources/' }
 		.UnityOutputPath			= '$OutputBase$\Unity\$ProjectPath$\'
 		//.UnityInputExcludePath		= '$ProjectPath$\CoreTest\' // Exclude Tests
 
 		// Windows
 		Unity( '$ProjectName$-Unity-Windows' )
 		{
-			.UnityPCH				= '$ProjectPath$\$PCHName$.h'
+			.UnityPCH				= '$PCHName$.h'
 		}
 
 		// Linux
@@ -55,17 +55,23 @@
 		Library( '$ProjectName$-Lib-$Platform$-$Config$' )
 		{
 			// Precompiled Header Creation/Use
-			.PCHInputFile				= '$ProjectPath$\$PCHName$.cpp'
+			.PCHInputFile				= '../$ProjectPath$\$PCHName$.cpp'
 			.PCHOutputFile				= '$OutputBase$\$ProjectName$\$PCHName$.pch'
-			.PCHOptions					+ ' /Yc"$ProjectPath$\$PCHName$.h"'
-			.CompilerOptions			+ ' /Yu"$ProjectPath$\$PCHName$.h" /Fp"$PCHOutputFile$"'
+			.PCHOptions					+ ' /Yc"$PCHName$.h"'
+			.CompilerOptions			+ ' /Yu"$PCHName$.h" /Fp"$PCHOutputFile$"'
 
 			// Input (Unity)
 			.CompilerInputUnity			= '$ProjectName$-Unity-Windows'
+			// Ici tu rajoute le path des .cpp que tu ne fout pas dans un .unity
+			//.CompilerInputPath          = '../Sources/'
 
 			// Output
 			.CompilerOutputPath			= '$OutputBase$\$ProjectName$\'
  			.LibrarianOutput 			= '$OutputBase$\$ProjectName$\$ProjectName$.lib'
+
+ 			// La tu mets le path des headers du projet sa mere
+ 			.CompilerOptions            + ' /I../$ProjectPath$'
+ 			                            + ' /I../$ProjectPath$/Shared'
 		}
 		Alias( '$ProjectName$-$Platform$-$Config$' ) { .Targets = '$ProjectName$-Lib-$Platform$-$Config$' }
 	}
