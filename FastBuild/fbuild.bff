@@ -455,6 +455,7 @@ Compiler( 'Compiler-x64-OSX' )
 // 
 //------------------------------------------------------------------------------
 .OutputBase = '../tmp'
+.LibOutputBase = '../lib'
 
 //------------------------------------------------------------------------------
 // Unity/Blob files (shared across configs)
@@ -571,8 +572,6 @@ ForEach( .Config in .Configs )
 
                             // Clang doesn't link at the moment, so we need list all the libs manually
                             'Core-$Platform$-$Config$',
-                            'ImGui-$Platform$-$Config$',
-                            'EASTL-$Platform$-$Config$',
                           }
     }
 }

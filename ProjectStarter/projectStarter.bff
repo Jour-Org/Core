@@ -74,8 +74,6 @@
 		Executable( '$ProjectName$-Exe-$Platform$-$Config$' )
 		{
 			.Libraries					= { 'Core-Lib-$Platform$-$Config$',
-											'ImGui-Lib-$Platform$-$Config$',
-											'EASTL-Lib-$Platform$-$Config$',
 
 											'ProjectStarter-Lib-$Platform$-$Config$' }
 			.LinkerOutput				= '../bin/$Platform$-$Config$/$ProjectName$.exe'
@@ -84,6 +82,8 @@
 										+ ' Ws2_32.lib'
 										+ ' LIBCMT.LIB'
 										+ ' User32.lib'
+										+ ' ../lib/$Platform$-$Config$/eastl/eastl.lib'
+										+ ' ../lib/$Platform$-$Config$/imgui/imgui.lib'
 		}
 		Alias( '$ProjectName$-$Platform$-$Config$' ) { .Targets = '$ProjectName$-Exe-$Platform$-$Config$' }
 	}
