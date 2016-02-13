@@ -57,7 +57,7 @@
 			// Precompiled Header Creation/Use
 			.PCHInputFile				= '../$ProjectPath$\$PCHName$.cpp'
 			.PCHOutputFile				= '$OutputBase$\$ProjectName$\$PCHName$.pch'
-			.PCHOptions					+ ' /Yc"$PCHName$.h" /I../../JourExternal/Helpers/EASTL/Include /I../../JourExternal/Helpers/EASTL/test/packages/EABase/include/Common /DEA_CHAR16_NATIVE /wd4619'
+			.PCHOptions					+ ' /Yc"$PCHName$.h" /I../../JourExternal/Helpers/EASTL/Include /I../../JourExternal/Helpers/EASTL/test/packages/EABase/include/Common /DEA_CHAR16_NATIVE /wd4619 /I../../JourExternal/Helpers/Turf'
 			.CompilerOptions			+ ' /Yu"$PCHName$.h" /Fp"$PCHOutputFile$"'
 
 			// Input (Unity)
@@ -76,6 +76,7 @@
 									    + ' /I../../JourExternal/Helpers/EASTL/Sources'
 									    + ' /I../../JourExternal/Helpers/EASTL/test/packages/EABase/include/Common'
 									    + ' /I../../JourExternal/Debug'
+ 										+ ' /I../../JourExternal/Helpers/Turf'
 		}
 		Alias( '$ProjectName$-$Platform$-$Config$' ) { .Targets = '$ProjectName$-Lib-$Platform$-$Config$' }
 	}

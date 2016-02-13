@@ -552,6 +552,7 @@ VCXProject( 'UpdateSolution-proj' )
 // External
 #include "../../JourExternal/bff_files/imgui.bff"
 #include "../../JourExternal/bff_files/eastl.bff"
+#include "../../JourExternal/bff_files/turf.bff"
 
 // Core
 #include "../Sources/core.bff"
@@ -631,6 +632,7 @@ ForEach( .Config in .Configs )
                             // Put externals here
                             'ImGui-$Platform$-$Config$',
                             'EASTL-$Platform$-$Config$',
+                            'Turf-$Platform$-$Config$',
                           }
     }
 }
@@ -701,7 +703,7 @@ VSSolution( 'solution' )
     .Folder_0_External =
     [ 
         .Path           = '0. External'
-        .Projects       = { 'ImGui-proj', 'EASTL-proj' }
+        .Projects       = { 'ImGui-proj', 'EASTL-proj', 'Turf-proj' }
     ]
     .Folder_1_Libs =
     [ 

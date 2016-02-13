@@ -68,6 +68,9 @@
  										+ ' ' //ImGui
  										+ ' /I../../JourExternal/Debug/'
 
+ 										+ ' ' //Turf
+ 										+ ' /I../../JourExternal/Helpers/Turf'
+
 		}
 
 		// Executable
@@ -84,6 +87,7 @@
 										+ ' User32.lib'
 										+ ' ../lib/$Platform$-$Config$/eastl/eastl.lib'
 										+ ' ../lib/$Platform$-$Config$/imgui/imgui.lib'
+										+ ' ../lib/$Platform$-$Config$/turf/turf.lib'
 		}
 		Alias( '$ProjectName$-$Platform$-$Config$' ) { .Targets = '$ProjectName$-Exe-$Platform$-$Config$' }
 	}
